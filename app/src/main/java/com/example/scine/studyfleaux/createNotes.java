@@ -14,9 +14,6 @@ public class createNotes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_notes);
 
-        PopupWindow titleWindow = new PopupWindow(this);
-        titleWindow.setHeight(16);
-        titleWindow.setHeight(16);
 
     }
 }

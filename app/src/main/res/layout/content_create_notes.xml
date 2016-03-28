@@ -6,14 +6,25 @@
     android:layout_height="match_parent"
     android:weightSum="1"
     tools:context=".createNotes"
-    tools:showIn="@layout/activity_create_notes">
+    tools:showIn="@layout/activity_create_notes"
+    android:baselineAligned="false">
 
 
-    <android.support.v7.widget.AppCompatEditText
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Enter Title:"
-        android:textSize="24sp"/>
+        android:hint="Title: "
+        android:textSize="20sp"
+        android:id="@+id/createNotesTitle"
+        android:inputType="text" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Content: "
+        android:textSize="20sp"
+        android:id="@+id/createNotesContent"
+        android:inputType="text" />
 
 
 </LinearLayout>
