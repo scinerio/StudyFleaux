@@ -21,15 +21,15 @@
         android:textSize="32sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/textView" />
+        android:id="@+id/homeTitle" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Notes"
-        android:id="@+id/button"
+        android:id="@+id/notesButton"
         android:layout_marginTop="45dp"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/homeTitle"
         android:layout_centerHorizontal="true"
         android:textSize="24sp"
         android:onClick="viewNotes"/>
@@ -38,9 +38,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Classes"
-        android:id="@+id/button2"
+        android:id="@+id/classesButton"
         android:textSize="24sp"
-        android:layout_below="@+id/button"
+        android:layout_below="@+id/flashcardsButton"
         android:layout_centerHorizontal="true"
         android:onClick="viewClasses"/>
 
@@ -48,22 +48,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Reminders"
-        android:id="@+id/button3"
+        android:id="@+id/remindersButton"
         android:textSize="24sp"
-        android:layout_below="@+id/button2"
+        android:onClick="viewReminders"
+        android:layout_below="@+id/classesButton"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Flashcards"
+        android:id="@+id/flashcardsButton"
+        android:textSize="24sp"
+        android:layout_below="@+id/notesButton"
         android:layout_centerHorizontal="true"
-        android:onClick="viewReminders"/>
+        android:onClick="viewFlashCards"/>
 
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Settings"
-        android:id="@+id/button4"
+        android:id="@+id/settingsButton"
         android:textSize="24sp"
-        android:layout_below="@+id/button3"
-        android:layout_centerHorizontal="true"
-        />
+        android:layout_below="@+id/remindersButton"
+        android:layout_alignEnd="@+id/classesButton" />
 
 
 

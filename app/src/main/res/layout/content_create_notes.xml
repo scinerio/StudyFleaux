@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:weightSum="1"
     tools:context=".createNotes"
-    tools:showIn="@layout/activity_create_notes"
-    android:baselineAligned="false">
+    tools:showIn="@layout/activity_create_notes">
 
 
     <EditText

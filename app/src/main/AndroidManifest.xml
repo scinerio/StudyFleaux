@@ -48,6 +48,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.scine.studyfleaux.notesHome" />
         </activity>
+        <activity
+            android:name=".flashcardsHome"
+            android:label="@string/title_activity_flashcards_home"
+            android:parentActivityName=".mainHome">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.scine.studyfleaux.mainHome" />
+        </activity>
     </application>
 
 </manifest>

@@ -56,5 +56,9 @@ public class mainHome extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void viewFlashCards(View view) {
+        Intent intent = new Intent(this, flashcardsHome.class);
+        startActivity(intent);
+    }
 
 }
