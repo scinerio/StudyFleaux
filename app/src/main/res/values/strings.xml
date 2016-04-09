@@ -6,6 +6,7 @@
     <string name="title_activity_reminders_home">Reminders</string>
     <string name="notesHome">Notes</string>
     <string name="title_activity_create_notes">Create Notes</string>
+    <string name="title_activity_create_flashcards">Create Flashcards</string>
 
     <!-- Strings related to Settings -->
 

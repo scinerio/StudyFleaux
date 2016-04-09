@@ -56,6 +56,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.scine.studyfleaux.mainHome" />
         </activity>
+        <activity
+            android:name=".createFlashcards"
+            android:label="Create Flashcards"
+            android:parentActivityName=".flashcardsHome">
+        </activity>
     </application>
 
 </manifest>
