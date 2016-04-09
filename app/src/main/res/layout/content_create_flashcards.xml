@@ -14,16 +14,33 @@
         android:layout_height="wrap_content"
         android:hint="Title: "
         android:textSize="20sp"
-        android:id="@+id/createNotesTitle"
+        android:id="@+id/createFlashcardTitle"
+        android:inputType="text"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Term: "
+        android:textSize="20sp"
+        android:id="@+id/createFlashcardTerm"
         android:inputType="text" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Content: "
+        android:hint="Definition:"
         android:textSize="20sp"
-        android:id="@+id/createNotesContent"
+        android:id="@+id/createFlashcardDefinition"
         android:inputType="text" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:id="@+id/saveButton"
+        android:layout_gravity="center_horizontal"
+        android:onClick="saveFlashcard"/>
+
 
 
 </LinearLayout>

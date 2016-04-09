@@ -7,9 +7,8 @@ public class FlashcardSet {
     private ArrayList<Flashcard> list;
     private String title;
 
-    public FlashcardSet(String title) {
+    public FlashcardSet() {
         list = new ArrayList<>();
-        this.title = title;
     }
 
     public void add(Flashcard card) {
@@ -23,5 +22,9 @@ public class FlashcardSet {
     public void edit(int pos, String term, String definition) {
         Flashcard newCard = new Flashcard(term, definition);
         list.set(pos, newCard);
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
