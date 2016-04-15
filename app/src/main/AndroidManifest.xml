@@ -59,8 +59,8 @@
         <activity
             android:name=".createFlashcards"
             android:label="Create Flashcards"
-            android:parentActivityName=".flashcardsHome">
-        </activity>
+            android:parentActivityName=".flashcardsHome"></activity>
+        <activity android:name=".flashcardView"></activity>
     </application>
 
 </manifest>

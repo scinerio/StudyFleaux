@@ -7,6 +7,8 @@
     android:fitsSystemWindows="true"
     tools:context=".notesHome">
 
+    <include layout="@layout/content_notes_home"/>
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,14 +29,9 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:clickable="true"
-        android:src="@drawable/fab"
         android:onClick="createNotes"/>
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/notesListView"
-        android:layout_marginTop="56dp"/>
+
 
 
 

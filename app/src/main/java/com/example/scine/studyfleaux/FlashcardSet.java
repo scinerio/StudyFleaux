@@ -1,9 +1,11 @@
 package com.example.scine.studyfleaux;
 
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class FlashcardSet {
+public class FlashcardSet implements Serializable{
     private ArrayList<Flashcard> list;
     private String title;
 
@@ -26,5 +28,9 @@ public class FlashcardSet {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getTitle() {
+        return title;
     }
 }

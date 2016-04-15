@@ -1,46 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1"
+    android:layout_weight="0"
+    android:orientation="vertical"
     tools:context=".createFlashcards"
     tools:showIn="@layout/activity_create_flashcards">
 
 
-    <EditText
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/createFlashcardTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Title: "
+        android:nextFocusForward="@+id/createFlashCardTerm"
         android:textSize="20sp"
-        android:id="@+id/createFlashcardTitle"
-        android:inputType="text"/>
+        app:met_primaryColor="#6A1B9A"
+        app:met_singleLineEllipsis="true"
+        app:met_textColorHint="#FF9800" />
 
-    <EditText
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/createFlashcardTerm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Term: "
         android:textSize="20sp"
-        android:id="@+id/createFlashcardTerm"
-        android:inputType="text" />
+        app:met_primaryColor="#6A1B9A"
+        app:met_singleLineEllipsis="true"
+        app:met_textColorHint="#FF9800" />
 
-    <EditText
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/createFlashcardDefinition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Definition:"
+        android:hint="Def: "
         android:textSize="20sp"
-        android:id="@+id/createFlashcardDefinition"
-        android:inputType="text" />
+        app:met_primaryColor="#6A1B9A"
+        app:met_singleLineEllipsis="false"
+        app:met_textColorHint="#FF9800"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="80dp" />
+
 
     <Button
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Add Card"
+        android:onClick="addCard"
+        android:gravity="bottom|left"/>
+
+    <Button
+        android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
-        android:id="@+id/saveButton"
-        android:layout_gravity="center_horizontal"
-        android:onClick="saveFlashcard"/>
-
-
+        android:onClick="saveSet"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>
