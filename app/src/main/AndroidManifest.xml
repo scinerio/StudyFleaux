@@ -19,19 +19,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".notesHome"
-            android:label="@string/title_activity_notes_home"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".classesHome"
-            android:label="@string/title_activity_classes_home"
-            android:parentActivityName=".mainHome"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.scine.studyfleaux.mainHome" />
-        </activity>
-        <activity
             android:name=".remindersHome"
             android:label="@string/title_activity_reminders_home"
             android:parentActivityName=".mainHome"
@@ -39,14 +26,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.scine.studyfleaux.mainHome" />
-        </activity>
-        <activity
-            android:name=".createNotes"
-            android:label="@string/title_activity_create_notes"
-            android:parentActivityName=".notesHome">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.scine.studyfleaux.notesHome" />
         </activity>
         <activity
             android:name=".flashcardsHome"
@@ -59,7 +38,7 @@
         <activity
             android:name=".createFlashcards"
             android:label="Create Flashcards"
-            android:parentActivityName=".flashcardsHome"></activity>
+            android:parentActivityName=".flashcardsHome"/>
         <activity android:name=".flashcardView"></activity>
     </application>
 

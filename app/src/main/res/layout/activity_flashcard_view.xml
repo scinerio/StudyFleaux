@@ -7,8 +7,10 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:fitsSystemWindows="true"
     tools:context=".flashcardView">
 
     <include layout="@layout/content_flashcard_view"/>
+
 
 </android.support.design.widget.CoordinatorLayout>

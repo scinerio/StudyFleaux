@@ -10,12 +10,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/view_flashcard_title_textView"
-        android:layout_gravity="center_horizontal"
-        android:text="Title"
-        android:textSize="20sp"
-        android:paddingTop="40dp"/>
+        android:id="@+id/view_flashcard_title_textView" />
+
 
 
 </LinearLayout>

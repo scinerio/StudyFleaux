@@ -42,15 +42,6 @@ public class mainHome extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void viewNotes(View view){
-        Intent intent = new Intent(this, notesHome.class);
-        startActivity(intent);
-    }
-
-    public void viewClasses(View view) {
-        Intent intent = new Intent(this, classesHome.class);
-        startActivity(intent);
-    }
 
     public void viewReminders(View view) {
         Intent intent = new Intent(this, remindersHome.class);
