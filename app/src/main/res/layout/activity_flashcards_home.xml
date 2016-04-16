@@ -18,7 +18,8 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:clickable="true"
-        android:onClick="createFlashcards"/>
+        android:onClick="createFlashcards"
+        android:src="@android:drawable/ic_input_add"/>
 
 
 

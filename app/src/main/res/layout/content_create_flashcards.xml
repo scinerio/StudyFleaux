@@ -11,18 +11,7 @@
 
 
     <com.rengwuxian.materialedittext.MaterialEditText
-        android:id="@+id/createFlashcardTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Title: "
-        android:nextFocusForward="@+id/createFlashCardTerm"
-        android:textSize="20sp"
-        app:met_primaryColor="#6A1B9A"
-        app:met_singleLineEllipsis="true"
-        app:met_textColorHint="#FF9800" />
-
-    <com.rengwuxian.materialedittext.MaterialEditText
-        android:id="@+id/createFlashcardTerm"
+        android:id="@+id/createFlashcardTerm1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Term: "

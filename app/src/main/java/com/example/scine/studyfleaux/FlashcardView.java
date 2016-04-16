@@ -16,9 +16,5 @@ public class flashcardView extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flashcard_view);
-        cardSetList = flashcardsHome.loadCards(this);
-        cardSet = cardSetList.get(getIntent().getExtras().getInt("position"));
-        flashTitleView = (TextView) findViewById(R.id.view_flashcard_title_textView);
-        flashTitleView.setText(cardSet.getTitle());
     }
 }

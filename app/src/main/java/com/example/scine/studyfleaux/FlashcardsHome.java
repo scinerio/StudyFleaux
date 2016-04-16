@@ -4,9 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -22,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class flashcardsHome extends AppCompatActivity {
+public class flashcardsHome extends AppCompatActivity{
     private ArrayList<FlashcardSet> cardSetList;
     public static final String CARDFILE = "FlashcardSetFile";
 
@@ -30,39 +34,23 @@ public class flashcardsHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flashcards_home);
-        String[] stuff = {"stuff","stuff","stuff","stuff","stuff",};
-        String[] cardTitles;
+        ListAdapter titlesAdapter;
+        cardSetList = loadCardSet(this);
+        String[] noTitles = {"YOU", "SHOULD", "CREATE", "CARDS"};
+        String[] cardTitles = getTitles();
         ListAdapter theAdapter;
-        //Read/Create File
-        try{
-            cardSetList = loadCards(this);
-            fixEmptyTitles();
-            if(!cardSetList.isEmpty()) {
-                cardTitles = new String[cardSetList.size()];
-                for (int i = 0; i < cardSetList.size(); i++) {
-                    cardTitles[i] = cardSetList.get(i).getTitle();
-                }
-                theAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, cardTitles);
+        if(cardTitles.length == 0)
+            theAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, noTitles);
+        else
+            theAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, cardTitles);
+        ListView theListView = (ListView) findViewById(R.id.cards_list_view);
+        theListView.setAdapter(theAdapter);
+        theListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(flashcardsHome.this, "You selected something", Toast.LENGTH_SHORT).show();
             }
-            else {
-                theAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, stuff);
-            }
-
-            ListView cardsListView = (ListView) findViewById(R.id.cards_list_view);
-            cardsListView.setAdapter(theAdapter);
-            cardsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent viewCardIntent = new Intent(flashcardsHome.this, flashcardView.class);
-                    viewCardIntent.putExtra("pos", position);
-                    startActivity(viewCardIntent);
-                    finish();
-                }
-            });
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-
+        });
     }
 
     /**
@@ -73,28 +61,28 @@ public class flashcardsHome extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public static void saveCards(Context context, ArrayList<FlashcardSet> cards) {
+    public static void saveCardSet(Context context, ArrayList<FlashcardSet> list) {
         SharedPreferences mPrefs = context.getSharedPreferences(CARDFILE, context.MODE_PRIVATE);
         SharedPreferences.Editor prefsEditor = mPrefs.edit();
         Gson gson = new Gson();
-        String json = gson.toJson(cards);
-        prefsEditor.putString("myJson", json);
-        prefsEditor.commit();
+        String json = gson.toJson(list);
+        prefsEditor.putString(CARDFILE, json);
+        prefsEditor.apply();
     }
 
-    public static ArrayList<FlashcardSet> loadCards(Context context) {
-        ArrayList<FlashcardSet> cardlist = new ArrayList<FlashcardSet>();
+    public static ArrayList<FlashcardSet> loadCardSet(Context context) {
+        ArrayList<FlashcardSet> tempList = new ArrayList<FlashcardSet>();
         SharedPreferences mPrefs = context.getSharedPreferences(CARDFILE, context.MODE_PRIVATE);
         Gson gson = new Gson();
-        String json = mPrefs.getString("myJson", "");
+        String json = mPrefs.getString(CARDFILE, "");
         if (json.isEmpty()) {
-            cardlist = new ArrayList<FlashcardSet>();
+            tempList = new ArrayList<FlashcardSet>();
         } else {
-            Type type = new TypeToken<List<FlashcardSet>>() {
+            Type type = new TypeToken<ArrayList<FlashcardSet>>() {
             }.getType();
-            cardlist = gson.fromJson(json, type);
+            tempList = gson.fromJson(json, type);
         }
-        return cardlist;
+        return tempList;
     }
 
     private void fixEmptyTitles() {
@@ -103,6 +91,13 @@ public class flashcardsHome extends AppCompatActivity {
             if(temp.getTitle() == null)
                 temp.setTitle("Untitled");
         }
+    }
+
+    private String[] getTitles() {
+        String[] temp = new String[cardSetList.size()];
+        for(int i=0; i<cardSetList.size(); i++)
+            temp[i] = cardSetList.get(i).getTitle();
+        return temp;
     }
 
 }

@@ -1,22 +1,20 @@
 package com.example.scine.studyfleaux;
 
-import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class createFlashcards extends AppCompatActivity {
     private FlashcardSet cardSet;
-    private EditText title, term, definition;
-    private ArrayList<FlashcardSet> cardSetList;
+    private EditText titleEditText, termEditText, definitionEditText;
+    private Button addCardButton, saveSetButton;
+    private String title;
 
 
     @Override
@@ -24,23 +22,44 @@ public class createFlashcards extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_flashcards);
         cardSet = new FlashcardSet();
-        cardSetList = flashcardsHome.loadCards(this);
+        termEditText = (EditText) findViewById(R.id.createFlashcardTerm1);
+        definitionEditText = (EditText) findViewById(R.id.createFlashcardDefinition);
+        saveSetButton = (Button) findViewById(R.id.saveButton);
+        saveSetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showInputDialog();
+            }
+        });
     }
 
-    public void addCard(View view) {
-        title = (EditText) findViewById(R.id.createFlashcardTitle);
-        term = (EditText) findViewById(R.id.createFlashcardTerm);
-        definition = (EditText) findViewById(R.id.createFlashcardDefinition);
-        cardSet.setTitle(title.getText().toString());
-        Flashcard temp = new Flashcard(term.getText().toString(), definition.getText().toString());
-        cardSet.add(temp);
-        Toast.makeText(createFlashcards.this, "Card added!", Toast.LENGTH_SHORT).show();
+    protected void showInputDialog() {
+
+        // get prompts.xml view
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View promptView = layoutInflater.inflate(R.layout.input_dialog, null);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setView(promptView);
+
+        titleEditText = (EditText) promptView.findViewById(R.id.createFlashcardTitle1);
+        // setup a dialog window
+        alertDialogBuilder.setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                })
+                .setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+        // create an alert dialog
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
     }
 
-    public void saveSet(View view) {
-        cardSetList.add(cardSet);
-        flashcardsHome.saveCards(this, cardSetList);
-        Intent intent = new Intent(this, flashcardsHome.class);
-        startActivity(intent);
-    }
+
 }
