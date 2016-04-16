@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,7 +28,7 @@ import java.util.List;
 
 
 public class flashcardsHome extends AppCompatActivity{
-    private ArrayList<FlashcardSet> cardSetList;
+    public ArrayList<FlashcardSet> cardSetList;
     public static final String CARDFILE = "FlashcardSetFile";
 
     @Override
@@ -35,14 +36,18 @@ public class flashcardsHome extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flashcards_home);
         ListAdapter titlesAdapter;
-        cardSetList = loadCardSet(this);
+        try {
+            cardSetList = loadCardSet(this);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
         String[] noTitles = {"YOU", "SHOULD", "CREATE", "CARDS"};
         String[] cardTitles = getTitles();
         ListAdapter theAdapter;
         if(cardTitles.length == 0)
             theAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, noTitles);
         else
-            theAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, cardTitles);
+            theAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, noTitles);
         ListView theListView = (ListView) findViewById(R.id.cards_list_view);
         theListView.setAdapter(theAdapter);
         theListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -51,6 +56,8 @@ public class flashcardsHome extends AppCompatActivity{
                 Toast.makeText(flashcardsHome.this, "You selected something", Toast.LENGTH_SHORT).show();
             }
         });
+
+
     }
 
     /**
@@ -61,27 +68,23 @@ public class flashcardsHome extends AppCompatActivity{
         startActivity(intent);
     }
 
-    public static void saveCardSet(Context context, ArrayList<FlashcardSet> list) {
-        SharedPreferences mPrefs = context.getSharedPreferences(CARDFILE, context.MODE_PRIVATE);
-        SharedPreferences.Editor prefsEditor = mPrefs.edit();
+    public void saveCardSet(Context context, ArrayList<FlashcardSet> list) {
+        SharedPreferences appSharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(this.getApplicationContext());
+        SharedPreferences.Editor prefsEditor = appSharedPrefs.edit();
         Gson gson = new Gson();
         String json = gson.toJson(list);
         prefsEditor.putString(CARDFILE, json);
         prefsEditor.apply();
     }
 
-    public static ArrayList<FlashcardSet> loadCardSet(Context context) {
-        ArrayList<FlashcardSet> tempList = new ArrayList<FlashcardSet>();
-        SharedPreferences mPrefs = context.getSharedPreferences(CARDFILE, context.MODE_PRIVATE);
+    public ArrayList<FlashcardSet> loadCardSet(Context context) {
+        SharedPreferences appSharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(this.getApplicationContext());
         Gson gson = new Gson();
-        String json = mPrefs.getString(CARDFILE, "");
-        if (json.isEmpty()) {
-            tempList = new ArrayList<FlashcardSet>();
-        } else {
-            Type type = new TypeToken<ArrayList<FlashcardSet>>() {
-            }.getType();
-            tempList = gson.fromJson(json, type);
-        }
+        String json = appSharedPrefs.getString("MyObject", "");
+        Type type = new TypeToken<List<FlashcardSet>>(){}.getType();
+        ArrayList<FlashcardSet> tempList = gson.fromJson(CARDFILE, type);
         return tempList;
     }
 
@@ -99,5 +102,6 @@ public class flashcardsHome extends AppCompatActivity{
             temp[i] = cardSetList.get(i).getTitle();
         return temp;
     }
+
 
 }

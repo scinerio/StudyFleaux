@@ -1,7 +1,9 @@
 package com.example.scine.studyfleaux;
 
 
-public class Flashcard {
+import java.io.Serializable;
+
+public class Flashcard implements Serializable{
     private String term, definition;
 
     public Flashcard(String term, String definition) {

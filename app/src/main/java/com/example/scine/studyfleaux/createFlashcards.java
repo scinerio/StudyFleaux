@@ -40,9 +40,7 @@ public class createFlashcards extends AppCompatActivity {
         addCardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                termEditText.setText("");
-                definitionEditText.setText("");
-                termEditText.requestFocus();
+                //saveSet(v);
             }
         });
     }
@@ -76,22 +74,16 @@ public class createFlashcards extends AppCompatActivity {
     }
 
     public void addCard(View v) {
-        termEditText = (EditText) findViewById(R.id.createFlashcardTerm1);
-        definitionEditText = (EditText) findViewById(R.id.createFlashcardDefinition);
-        Flashcard temp = new Flashcard(termEditText.getText().toString(), definitionEditText.getText().toString());
-        cardSet.add(temp);
-        Toast.makeText(createFlashcards.this, "Card Added!", Toast.LENGTH_SHORT).show();
-        termEditText.setText("");
-        definitionEditText.setText("");
-        termEditText.requestFocus();
+       //Flashcard temp = new Flashcard(termEditText.getText().toString(), definitionEditText.getText().toString());
+       //cardSet.add(temp);
+       //Toast.makeText(createFlashcards.this, "Card Added!", Toast.LENGTH_SHORT).show();
+       //termEditText.setText("");
+       //definitionEditText.setText("");
+       //termEditText.requestFocus();
     }
 
     public void saveSet(View v) {
-        ArrayList<FlashcardSet> temp = flashcardsHome.loadCardSet(this);
-        temp.add(cardSet);
-        flashcardsHome.saveCardSet(this, temp);
-        Intent intent = new Intent(this, flashcardsHome.class);
-        startActivity(intent);
+
     }
 
 

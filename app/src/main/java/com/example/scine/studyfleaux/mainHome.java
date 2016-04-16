@@ -43,11 +43,6 @@ public class mainHome extends AppCompatActivity {
     }
 
 
-    public void viewReminders(View view) {
-        Intent intent = new Intent(this, remindersHome.class);
-        startActivity(intent);
-    }
-
     public void viewFlashCards(View view) {
         Intent intent = new Intent(this, flashcardsHome.class);
         startActivity(intent);
