@@ -1,6 +1,7 @@
 package com.example.scine.studyfleaux;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class createFlashcards extends AppCompatActivity {
     private FlashcardSet cardSet;
@@ -22,13 +25,24 @@ public class createFlashcards extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_flashcards);
         cardSet = new FlashcardSet();
+        saveSetButton = (Button) findViewById(R.id.saveButton);
+        addCardButton = (Button) findViewById(R.id.addButton);
         termEditText = (EditText) findViewById(R.id.createFlashcardTerm1);
         definitionEditText = (EditText) findViewById(R.id.createFlashcardDefinition);
-        saveSetButton = (Button) findViewById(R.id.saveButton);
+
         saveSetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showInputDialog();
+            }
+        });
+
+        addCardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                termEditText.setText("");
+                definitionEditText.setText("");
+                termEditText.requestFocus();
             }
         });
     }
@@ -59,6 +73,25 @@ public class createFlashcards extends AppCompatActivity {
         // create an alert dialog
         AlertDialog alert = alertDialogBuilder.create();
         alert.show();
+    }
+
+    public void addCard(View v) {
+        termEditText = (EditText) findViewById(R.id.createFlashcardTerm1);
+        definitionEditText = (EditText) findViewById(R.id.createFlashcardDefinition);
+        Flashcard temp = new Flashcard(termEditText.getText().toString(), definitionEditText.getText().toString());
+        cardSet.add(temp);
+        Toast.makeText(createFlashcards.this, "Card Added!", Toast.LENGTH_SHORT).show();
+        termEditText.setText("");
+        definitionEditText.setText("");
+        termEditText.requestFocus();
+    }
+
+    public void saveSet(View v) {
+        ArrayList<FlashcardSet> temp = flashcardsHome.loadCardSet(this);
+        temp.add(cardSet);
+        flashcardsHome.saveCardSet(this, temp);
+        Intent intent = new Intent(this, flashcardsHome.class);
+        startActivity(intent);
     }
 
 

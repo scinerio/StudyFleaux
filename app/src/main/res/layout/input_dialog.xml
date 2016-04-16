@@ -10,8 +10,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Enter Name"
-        android:id="@+id/textView" />
+        android:text="Enter Set's Title"
+        android:id="@+id/textView"
+        android:onClick="saveSet"/>
 
     <EditText
         android:id="@+id/createFlashcardTitle1"
