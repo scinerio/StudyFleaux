@@ -40,7 +40,7 @@ public class createFlashcards extends AppCompatActivity {
         addCardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //saveSet(v);
+                addCard(v);
             }
         });
     }
@@ -74,15 +74,16 @@ public class createFlashcards extends AppCompatActivity {
     }
 
     public void addCard(View v) {
-       //Flashcard temp = new Flashcard(termEditText.getText().toString(), definitionEditText.getText().toString());
-       //cardSet.add(temp);
-       //Toast.makeText(createFlashcards.this, "Card Added!", Toast.LENGTH_SHORT).show();
-       //termEditText.setText("");
-       //definitionEditText.setText("");
-       //termEditText.requestFocus();
+       Flashcard temp = new Flashcard(termEditText.getText().toString(), definitionEditText.getText().toString());
+       cardSet.add(temp);
+       Toast.makeText(createFlashcards.this, "Card Added!", Toast.LENGTH_SHORT).show();
+       termEditText.setText("");
+       definitionEditText.setText("");
+       termEditText.requestFocus();
     }
 
     public void saveSet(View v) {
+        Intent intent = new Intent(this, flashcardsHome.class);
 
     }
 
