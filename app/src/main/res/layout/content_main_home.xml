@@ -24,7 +24,7 @@
         android:gravity="top|center"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/flashcardsButton" />
+        android:layout_centerHorizontal="true" />
 
 
     <Button
@@ -38,7 +38,10 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="92dp"
         android:layout_below="@+id/homeTitle"
-        android:layout_centerHorizontal="true" />
+        android:enabled="true"
+        android:backgroundTint="#3ea43b"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
 
 

@@ -12,24 +12,25 @@
 
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/createFlashcardTerm1"
-        android:layout_width="wrap_content"
+        android:layout_width="248dp"
         android:layout_height="wrap_content"
-        android:hint="Term: "
+        android:hint="  Term: "
         android:textSize="20sp"
         app:met_primaryColor="#6A1B9A"
         app:met_singleLineEllipsis="true"
-        app:met_textColorHint="#FF9800" />
+        app:met_textColorHint="#3ea43b"
+        android:singleLine="false" />
 
 
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/createFlashcardDefinition"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Def: "
+        android:hint="  Definition: "
         android:textSize="20sp"
         app:met_primaryColor="#6A1B9A"
         app:met_singleLineEllipsis="false"
-        app:met_textColorHint="#FF9800"
+        app:met_textColorHint="#3ea43b"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
         android:layout_marginRight="100dp"
@@ -43,7 +44,11 @@
         android:layout_gravity="center_horizontal"
         android:text="Add Card"
         android:onClick="addCard"
-        android:gravity="bottom|left"/>
+        android:gravity="bottom|left"
+        android:backgroundTint="#3ea43b"
+        android:textColor="#ffffff"
+        android:elegantTextHeight="false"
+        android:singleLine="false" />
 
     <Button
         android:id="@+id/saveButton"
@@ -51,6 +56,8 @@
         android:layout_height="wrap_content"
         android:text="Save Set"
         android:onClick="addSet"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="#3ea43b"
+        android:textColor="#ffffff" />
 
 </LinearLayout>
