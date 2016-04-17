@@ -2,61 +2,68 @@ package com.example.scine.studyfleaux;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.ContextMenu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class flashcardsHome extends AppCompatActivity{
-    public ArrayList<FlashcardSet> cardSetList;
+    private ArrayList<FlashcardSet> cardSetList = new ArrayList<FlashcardSet>();
     public static final String CARDFILE = "FlashcardSetFile";
+    private Intent intent;
+    Button contextButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flashcards_home);
-        ListAdapter titlesAdapter;
-        try {
-            cardSetList = loadCardSet(this);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-        String[] noTitles = {"YOU", "SHOULD", "CREATE", "CARDS"};
-        String[] cardTitles = getTitles();
         ListAdapter theAdapter;
-        if(cardTitles.length == 0)
+        intent = getIntent();
+        contextButton  = (Button) findViewById(R.id.contextMenuButton);
+        if(intent.hasExtra("cardSet")) {
+            addSet(this, (FlashcardSet) intent.getSerializableExtra("cardSet"));
+        }
+        String[] cardTitles;
+        cardSetList = loadCardSet(this);
+        String[] noTitles = {"YOU", "SHOULD", "CREATE", "CARDS"};
+        if(cardSetList.size() != 0) {
+            cardTitles = getTitles();
+            theAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, cardTitles);
+        } else {
             theAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, noTitles);
-        else
-            theAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, noTitles);
+        }
+
         ListView theListView = (ListView) findViewById(R.id.cards_list_view);
         theListView.setAdapter(theAdapter);
+        registerForContextMenu(theListView);
+
         theListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(flashcardsHome.this, "You selected something", Toast.LENGTH_SHORT).show();
+                viewCardSet(view, position);
             }
         });
 
+        theListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Toast.makeText(flashcardsHome.this, "YOU JUST LONG CLICKED", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
 
     }
 
@@ -69,38 +76,64 @@ public class flashcardsHome extends AppCompatActivity{
     }
 
     public void saveCardSet(Context context, ArrayList<FlashcardSet> list) {
-        SharedPreferences appSharedPrefs = PreferenceManager
-                .getDefaultSharedPreferences(this.getApplicationContext());
-        SharedPreferences.Editor prefsEditor = appSharedPrefs.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(list);
-        prefsEditor.putString(CARDFILE, json);
-        prefsEditor.apply();
+        TinyDB tinydb = new TinyDB(this);
+        tinydb.putListObject(CARDFILE, cardSetList);
     }
 
     public ArrayList<FlashcardSet> loadCardSet(Context context) {
-        SharedPreferences appSharedPrefs = PreferenceManager
-                .getDefaultSharedPreferences(this.getApplicationContext());
-        Gson gson = new Gson();
-        String json = appSharedPrefs.getString("MyObject", "");
-        Type type = new TypeToken<List<FlashcardSet>>(){}.getType();
-        ArrayList<FlashcardSet> tempList = gson.fromJson(CARDFILE, type);
-        return tempList;
+        TinyDB tinyDB = new TinyDB(this);
+        return tinyDB.getListObject(CARDFILE, FlashcardSet.class);
     }
 
-    private void fixEmptyTitles() {
-        for(int i=0; i<cardSetList.size(); i++) {
-            FlashcardSet temp = cardSetList.get(i);
-            if(temp.getTitle() == null)
-                temp.setTitle("Untitled");
-        }
-    }
 
     private String[] getTitles() {
         String[] temp = new String[cardSetList.size()];
         for(int i=0; i<cardSetList.size(); i++)
             temp[i] = cardSetList.get(i).getTitle();
         return temp;
+    }
+
+
+    public void addSet(Context context, FlashcardSet set) {
+        cardSetList = loadCardSet(this);
+        cardSetList.add(set);
+        saveCardSet(this, cardSetList);
+    }
+
+    public void viewCardSet(View view, int pos) {
+        Intent intent = new Intent(this, flashcardView.class);
+        intent.putExtra("cardSet", cardSetList.get(pos));
+        startActivity(intent);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, view, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_menu, menu);
+    }
+
+    public boolean onContextItemSelected(MenuItem item, int position) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        switch (item.getItemId()) {
+            case R.id.mnu_edit:
+                editSet(info.id, position);
+                return true;
+            case R.id.mnu_delete:
+                deleteSet(info.id, position);
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
+    private void editSet(long id, int position) {
+        return;
+    }
+
+    private void deleteSet(long id, int position) {
+        cardSetList.remove(position);
+        saveCardSet(this, cardSetList);
     }
 
 

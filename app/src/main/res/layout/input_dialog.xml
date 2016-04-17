@@ -12,7 +12,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Enter Set's Title"
         android:id="@+id/textView"
-        android:onClick="saveSet"/>
+        android:onClick="addSet"/>
 
     <EditText
         android:id="@+id/createFlashcardTitle1"

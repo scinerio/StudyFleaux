@@ -33,4 +33,12 @@ public class FlashcardSet implements Serializable{
     public String getTitle() {
         return title;
     }
+
+    public int getSize() {
+        return list.size();
+    }
+
+    public Flashcard get(int pos) {
+        return list.get(pos);
+    }
 }

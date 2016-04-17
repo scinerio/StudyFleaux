@@ -16,6 +16,11 @@
        android:longClickable="true">
    </ListView>
 
+   <Button
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:id="@+id/contextMenuButton"/>
+
 
 
 </LinearLayout>

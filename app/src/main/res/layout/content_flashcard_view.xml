@@ -5,14 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:showIn="@layout/activity_flashcard_view"
-    tools:context=".flashcardView">
+    tools:context=".flashcardView"
+    android:weightSum="1">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Title"
+        android:textSize="35sp"
         android:id="@+id/view_flashcard_title_textView" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="152dp"
+        android:textSize="30sp"
+        android:id="@+id/view_flashcard_term_textView"
+        android:paddingTop="14dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="204dp"
+        android:textSize="30sp"
+        android:id="@+id/view_flashcard_def_textView"
+        android:layout_weight="0.96" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/nextButton"
+        android:layout_gravity="right"
+        android:text=">"
+        android:textSize="30sp"
+        android:onClick="nextThing"/>
 
 
 

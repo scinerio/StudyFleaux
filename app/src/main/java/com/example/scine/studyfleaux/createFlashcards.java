@@ -49,24 +49,25 @@ public class createFlashcards extends AppCompatActivity {
 
         // get prompts.xml view
         LayoutInflater layoutInflater = LayoutInflater.from(this);
-        View promptView = layoutInflater.inflate(R.layout.input_dialog, null);
+        final View promptView = layoutInflater.inflate(R.layout.input_dialog, null);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setView(promptView);
 
         titleEditText = (EditText) promptView.findViewById(R.id.createFlashcardTitle1);
         // setup a dialog window
-        alertDialogBuilder.setCancelable(false)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setCancelable(false);
+        alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                title = titleEditText.getText().toString();
+                saveSet(promptView, title);
+            }
+        });
+        alertDialogBuilder.setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-
+                        dialog.cancel();
                     }
-                })
-                .setNegativeButton("Cancel",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
+                });
 
         // create an alert dialog
         AlertDialog alert = alertDialogBuilder.create();
@@ -82,9 +83,11 @@ public class createFlashcards extends AppCompatActivity {
        termEditText.requestFocus();
     }
 
-    public void saveSet(View v) {
+    public void saveSet(View v, String tit) {
         Intent intent = new Intent(this, flashcardsHome.class);
-
+        cardSet.setTitle(tit);
+        intent.putExtra("cardSet", cardSet);
+        startActivity(intent);
     }
 
 
