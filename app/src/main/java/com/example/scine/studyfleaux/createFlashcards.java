@@ -11,8 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
+/**
+ * Class that goes with the activity to create a cardSet
+ */
 public class createFlashcards extends AppCompatActivity {
     private FlashcardSet cardSet;
     private EditText titleEditText, termEditText, definitionEditText;
@@ -74,6 +75,11 @@ public class createFlashcards extends AppCompatActivity {
         alert.show();
     }
 
+    /**
+     * Called when the addCard button is pressed
+     * Adds a card to a FlashcardSet
+     * @param v
+     */
     public void addCard(View v) {
        Flashcard temp = new Flashcard(termEditText.getText().toString(), definitionEditText.getText().toString());
        cardSet.add(temp);
@@ -83,6 +89,13 @@ public class createFlashcards extends AppCompatActivity {
        termEditText.requestFocus();
     }
 
+    /**
+     * Saves the set of cards and brings you to
+     * FlashcardHome
+     * Opens up a menu to prompt you for a title
+     * @param v
+     * @param tit Title of the set
+     */
     public void saveSet(View v, String tit) {
         Intent intent = new Intent(this, flashcardsHome.class);
         cardSet.setTitle(tit);
