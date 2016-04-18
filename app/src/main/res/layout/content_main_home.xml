@@ -12,19 +12,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".mainHome"
     tools:showIn="@layout/activity_main_home"
-    android:background="#ffffff">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Study Fleaux"
-        android:textColor="#230135"
-        android:textSize="32sp"
-        android:id="@+id/homeTitle"
-        android:gravity="top|center"
-        android:layout_gravity="center_horizontal"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+    android:background="@drawable/main_home_bg_title">
 
 
     <Button
@@ -36,12 +24,12 @@
         android:onClick="viewFlashCards"
         android:textColor="#ffffff"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="92dp"
-        android:layout_below="@+id/homeTitle"
+        android:layout_marginTop="174dp"
         android:enabled="true"
         android:backgroundTint="#3ea43b"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
 
 

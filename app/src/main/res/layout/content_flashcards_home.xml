@@ -8,7 +8,7 @@
     android:weightSum="1"
     tools:context=".flashcardsHome"
     tools:showIn="@layout/activity_flashcards_home"
-    android:background="#ffffff">
+    android:background="@drawable/main_home_bg">
 
    <ListView
        android:layout_width="match_parent"

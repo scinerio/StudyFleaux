@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:showIn="@layout/activity_flashcard_view"
     tools:context=".flashcardView"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@drawable/main_home_bg">
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,6 +25,7 @@
         android:id="@+id/view_flashcard_term_textView"
         android:paddingTop="14dp"
         android:background="@drawable/note1"
+        android:alpha=".80"
         android:textIsSelectable="false"
         android:autoText="false"
         android:textAlignment="center" />
@@ -33,20 +35,22 @@
         android:layout_height="204dp"
         android:textSize="30sp"
         android:id="@+id/view_flashcard_def_textView"
-        android:layout_weight="0.96"
+        android:layout_weight="0.81"
         android:background="@drawable/note2"
+        android:alpha=".75"
         android:textAlignment="center" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:id="@+id/nextButton"
-        android:layout_gravity="right"
-        android:text=">"
-        android:textSize="30sp"
-        android:onClick="nextThing"/>
-
+        android:text="NEXT"
+        android:textSize="20sp"
+        android:onClick="nextThing"
+        android:background="#ebef7e"
+        android:textColor="#3ea43b"
+        android:layout_gravity="right" />
 
 
 </LinearLayout>

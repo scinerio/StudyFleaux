@@ -7,7 +7,8 @@
     android:layout_weight="0"
     android:orientation="vertical"
     tools:context=".createFlashcards"
-    tools:showIn="@layout/activity_create_flashcards">
+    tools:showIn="@layout/activity_create_flashcards"
+    android:background="@drawable/main_home_bg">
 
 
     <com.rengwuxian.materialedittext.MaterialEditText
@@ -16,7 +17,7 @@
         android:layout_height="wrap_content"
         android:hint="  Term: "
         android:textSize="20sp"
-        app:met_primaryColor="#6A1B9A"
+        app:met_primaryColor="#ffffff"
         app:met_singleLineEllipsis="true"
         app:met_textColorHint="#3ea43b"
         android:singleLine="false" />
@@ -24,11 +25,11 @@
 
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/createFlashcardDefinition"
-        android:layout_width="match_parent"
+        android:layout_width="249dp"
         android:layout_height="wrap_content"
         android:hint="  Definition: "
         android:textSize="20sp"
-        app:met_primaryColor="#6A1B9A"
+        app:met_primaryColor="#ffffff"
         app:met_singleLineEllipsis="false"
         app:met_textColorHint="#3ea43b"
         android:layout_marginLeft="0dp"
@@ -44,7 +45,6 @@
         android:layout_gravity="center_horizontal"
         android:text="Add Card"
         android:onClick="addCard"
-        android:gravity="bottom|left"
         android:backgroundTint="#3ea43b"
         android:textColor="#ffffff"
         android:elegantTextHeight="false"
