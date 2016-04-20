@@ -97,7 +97,7 @@ public class createFlashcards extends AppCompatActivity {
      * @param tit Title of the set
      */
     public void saveSet(View v, String tit) {
-        Intent intent = new Intent(this, flashcardsHome.class);
+        Intent intent = new Intent(this, FlashcardsHome.class);
         cardSet.setTitle(tit);
         intent.putExtra("cardSet", cardSet);
         startActivity(intent);

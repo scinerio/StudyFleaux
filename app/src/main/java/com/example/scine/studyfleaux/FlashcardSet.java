@@ -41,4 +41,5 @@ public class FlashcardSet implements Serializable{
     public Flashcard get(int pos) {
         return list.get(pos);
     }
+
 }

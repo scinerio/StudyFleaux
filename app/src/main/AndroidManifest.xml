@@ -28,7 +28,7 @@
                 android:value="com.example.scine.studyfleaux.mainHome" />
         </activity>
         <activity
-            android:name=".flashcardsHome"
+            android:name=".FlashcardsHome"
             android:label="@string/title_activity_flashcards_home"
             android:parentActivityName=".mainHome">
             <meta-data
@@ -38,7 +38,7 @@
         <activity
             android:name=".createFlashcards"
             android:label="Create Flashcards"
-            android:parentActivityName=".flashcardsHome"/>
+            android:parentActivityName=".FlashcardsHome"/>
         <activity android:name=".flashcardView"></activity>
     </application>
 

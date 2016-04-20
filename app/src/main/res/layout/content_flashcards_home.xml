@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1"
-    tools:context=".flashcardsHome"
+    tools:context=".FlashcardsHome"
     tools:showIn="@layout/activity_flashcards_home"
     android:background="@drawable/main_home_bg">
 

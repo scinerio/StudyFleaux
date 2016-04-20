@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+/**
+ * Class that accomponies the activity to display a cardSet
+ */
 public class flashcardView extends Activity {
     private FlashcardSet cardSet;
     private ArrayList<FlashcardSet> cardSetList;

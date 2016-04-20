@@ -62,7 +62,7 @@ public class mainHome extends AppCompatActivity {
      * @param view The button
      */
     public void viewFlashCards(View view) {
-        Intent intent = new Intent(this, flashcardsHome.class);
+        Intent intent = new Intent(this, FlashcardsHome.class);
         startActivity(intent);
     }
 
