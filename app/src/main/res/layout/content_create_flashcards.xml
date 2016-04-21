@@ -20,7 +20,8 @@
         app:met_primaryColor="#ffffff"
         app:met_singleLineEllipsis="true"
         app:met_textColorHint="#3ea43b"
-        android:singleLine="false" />
+        android:singleLine="false"
+        android:inputType="textCapSentences"/>
 
 
     <com.rengwuxian.materialedittext.MaterialEditText
@@ -35,7 +36,8 @@
         android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
         android:layout_marginRight="100dp"
-        android:layout_marginBottom="80dp" />
+        android:layout_marginBottom="80dp"
+        android:inputType="textCapSentences"/>
 
 
     <Button
