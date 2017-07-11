@@ -7,8 +7,9 @@
     tools:showIn="@layout/activity_flashcard_view"
     tools:context=".flashcardView"
     android:weightSum="1"
-    android:background="@drawable/main_home_bg">
+    android:background="@drawable/main">
 
+    //Title
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,39 +19,65 @@
         android:textSize="35sp"
         android:id="@+id/view_flashcard_title_textView" />
 
+    //Vocab
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="152dp"
+        android:layout_height="150dp"
         android:textSize="30sp"
         android:id="@+id/view_flashcard_term_textView"
         android:paddingTop="14dp"
-        android:background="@drawable/note1"
-        android:alpha=".80"
+        android:background="@drawable/vocab"
+        android:alpha=".90"
         android:textIsSelectable="false"
         android:autoText="false"
         android:textAlignment="center" />
 
+    //Definitions
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="204dp"
-        android:textSize="30sp"
         android:id="@+id/view_flashcard_def_textView"
-        android:layout_weight="0.81"
-        android:background="@drawable/note2"
-        android:alpha=".75"
-        android:textAlignment="center" />
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="0.80"
+        android:alpha=".90"
+        android:background="@drawable/def"
+        android:textAlignment="center"
+        android:textSize="30sp" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/nextButton"
-        android:text="NEXT"
-        android:textSize="20sp"
-        android:onClick="nextThing"
-        android:background="#ebef7e"
-        android:textColor="#3ea43b"
-        android:layout_gravity="right" />
+    //this will put the two buttons on the same line
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        //PREV Button
+
+        <Button
+            android:id="@+id/prevButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:onClick="prevThing"
+            android:layout_marginLeft="5dp"
+
+            android:background="@drawable/prevButton"/>
+
+        //create a space between the two buttons
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        //Next Button
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/nextButton"
+            android:onClick="nextThing"
+            android:layout_marginRight="5dp"
+
+            android:background="@drawable/nextButton"/>
+
+    </LinearLayout>
 
 
 </LinearLayout>
