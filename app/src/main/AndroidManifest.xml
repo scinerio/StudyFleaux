@@ -5,12 +5,12 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Memory Flash"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".mainHome"
-            android:label="@string/app_name"
+            android:label="Memory Flash"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,18 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".remindersHome"
-            android:label="@string/title_activity_reminders_home"
-            android:parentActivityName=".mainHome"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.scine.studyfleaux.mainHome" />
-        </activity>
+
+        //title of flashcard sets
         <activity
             android:name=".FlashcardsHome"
-            android:label="@string/title_activity_flashcards_home"
+            android:label="Flashcard Sets"
             android:parentActivityName=".mainHome">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

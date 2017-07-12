@@ -65,7 +65,7 @@ public class FlashcardsHome extends AppCompatActivity {
         cardSetList = loadCardSet(this);
 
         //What is displayed if you don't have cards
-        final String[] noTitles = {"YOU", "SHOULD", "CREATE", "CARDS"};
+        final String[] noTitles = {"CREATE NEW CARDS"};
         if(cardSetList.size() != 0) {
             cardTitles = getTitles();
             theAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, cardTitles);

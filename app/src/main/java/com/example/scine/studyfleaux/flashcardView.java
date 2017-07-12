@@ -12,13 +12,16 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 /**
- * Class that accomponies the activity to display a cardSet
+ * Class that accompanies the activity to display a cardSet
  */
 public class flashcardView extends Activity {
     private FlashcardSet cardSet;
     private ArrayList<FlashcardSet> cardSetList;
     private TextView flashTitleView, flashTermView, flashDefView;
+
     private Button nextButton;
+    private Button prevButton;
+
     public static int i;
     public static boolean termTime = false;
 
@@ -38,6 +41,9 @@ public class flashcardView extends Activity {
         flashTitleView.setText(cardSet.getTitle());
         flashTermView.setText(cardSet.get(0).getTerm());
         i=0;
+
+
+
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

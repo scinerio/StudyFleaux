@@ -8,9 +8,9 @@
     android:orientation="vertical"
     tools:context=".createFlashcards"
     tools:showIn="@layout/activity_create_flashcards"
-    android:background="@drawable/main_home_bg">
+    android:background="@drawable/main">
 
-
+    //Vocab
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/createFlashcardTerm1"
         android:layout_width="248dp"
@@ -19,11 +19,11 @@
         android:textSize="20sp"
         app:met_primaryColor="#ffffff"
         app:met_singleLineEllipsis="true"
-        app:met_textColorHint="#3ea43b"
+        app:met_textColorHint="#312c32"
         android:singleLine="false"
         android:inputType="textCapSentences"/>
 
-
+    //Definition
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/createFlashcardDefinition"
         android:layout_width="249dp"
@@ -32,34 +32,43 @@
         android:textSize="20sp"
         app:met_primaryColor="#ffffff"
         app:met_singleLineEllipsis="false"
-        app:met_textColorHint="#3ea43b"
+        app:met_textColorHint="#312c32"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
         android:layout_marginRight="100dp"
         android:layout_marginBottom="80dp"
         android:inputType="textCapSentences"/>
 
-
+    //Add card button
     <Button
         android:id="@+id/addButton"
-        android:layout_width="wrap_content"
+        android:onClick="addCard"
+
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Add Card"
-        android:onClick="addCard"
-        android:backgroundTint="#3ea43b"
-        android:textColor="#ffffff"
-        android:elegantTextHeight="false"
-        android:singleLine="false" />
+        android:singleLine="false"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
 
+        android:text="Add Card"
+        android:textColor="#daad86"
+        android:elegantTextHeight="false"
+        android:backgroundTint="#312c32"/>
+
+    //Save card set button
     <Button
         android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save Set"
         android:onClick="addSet"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:backgroundTint="#3ea43b"
-        android:textColor="#ffffff" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+
+        android:text="Save Set"
+        android:textColor="#daad86"
+        android:backgroundTint="#312c32" />
 
 </LinearLayout>

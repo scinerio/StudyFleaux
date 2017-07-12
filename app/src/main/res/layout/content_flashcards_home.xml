@@ -8,20 +8,29 @@
     android:weightSum="1"
     tools:context=".FlashcardsHome"
     tools:showIn="@layout/activity_flashcards_home"
-    android:background="@drawable/main_home_bg">
+    android:background="@drawable/main">
 
    <ListView
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
        android:id="@+id/cards_list_view"
-       android:longClickable="true">
-   </ListView>
+       android:layout_width="match_parent"
+       android:layout_height="440dp"
+       android:layout_weight="0.50"
+       android:headerDividersEnabled="false"
+       android:longClickable="true"
+       android:textColor="#312c32"></ListView>
 
    <Button
+       android:id="@+id/contextMenuButton"
+       style="@style/Widget.AppCompat.Button"
        android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:id="@+id/contextMenuButton"/>
-
+       android:layout_height="75dp"
+       android:layout_weight="0.13"
+       android:layout_marginBottom="10dp"
+       android:backgroundTint="#312c32"
+       android:onClick="createFlashcards"
+       android:textColor="#daad86"
+       android:textSize="25dp"
+       android:text="Create New" />
 
 
 </LinearLayout>

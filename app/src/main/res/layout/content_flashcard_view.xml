@@ -16,6 +16,7 @@
         android:layout_gravity="top|center"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Title"
+        android:textColor="#312c32"
         android:textSize="35sp"
         android:id="@+id/view_flashcard_title_textView" />
 
@@ -24,10 +25,11 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:textSize="30sp"
+        android:textColor="#312c32"
         android:id="@+id/view_flashcard_term_textView"
-        android:paddingTop="14dp"
+        android:paddingTop="50dp"
         android:background="@drawable/vocab"
-        android:alpha=".90"
+        android:alpha=".80"
         android:textIsSelectable="false"
         android:autoText="false"
         android:textAlignment="center" />
@@ -39,10 +41,12 @@
         android:layout_height="200dp"
         android:layout_marginBottom="10dp"
         android:layout_weight="0.80"
-        android:alpha=".90"
+        android:alpha=".80"
         android:background="@drawable/def"
         android:textAlignment="center"
-        android:textSize="30sp" />
+        android:paddingTop="30dp"
+        android:textSize="30sp"
+        android:textColor="#312c32"/>
 
     //this will put the two buttons on the same line
     <LinearLayout
@@ -58,7 +62,7 @@
             android:onClick="prevThing"
             android:layout_marginLeft="5dp"
 
-            android:background="@drawable/prevButton"/>
+            android:background="@drawable/prev_button"/>
 
         //create a space between the two buttons
         <Space
@@ -75,7 +79,7 @@
             android:onClick="nextThing"
             android:layout_marginRight="5dp"
 
-            android:background="@drawable/nextButton"/>
+            android:background="@drawable/next_button"/>
 
     </LinearLayout>
 
