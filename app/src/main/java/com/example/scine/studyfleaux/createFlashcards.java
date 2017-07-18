@@ -103,5 +103,4 @@ public class createFlashcards extends AppCompatActivity {
         startActivity(intent);
     }
 
-
 }
