@@ -30,7 +30,7 @@
         android:paddingTop="50dp"
         android:background="@drawable/vocab"
         android:alpha=".80"
-        android:textIsSelectable="false"
+        android:textIsSelectable="true"
         android:autoText="false"
         android:textAlignment="center" />
 
@@ -56,9 +56,9 @@
         //PREV Button
 
         <Button
-            android:id="@+id/prevButton"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:id="@+id/prevButton"
             android:onClick="prevThing"
             android:layout_marginLeft="5dp"
 
@@ -69,6 +69,19 @@
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_weight="1" />
+
+        //Show number of cards within the set
+        <TextView
+            android:id="@+id/view_flashcard_count_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="15dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="#312c32"
+            android:text=""
+            />
 
         //Next Button
         <Button

@@ -38,11 +38,10 @@ public class flashcardView extends Activity {
         flashTermView = (TextView) findViewById(R.id.view_flashcard_term_textView);
         flashDefView = (TextView) findViewById(R.id.view_flashcard_def_textView);
         nextButton = (Button) findViewById(R.id.nextButton);
+        prevButton = (Button) findViewById(R.id.prevButton);
         flashTitleView.setText(cardSet.getTitle());
         flashTermView.setText(cardSet.get(0).getTerm());
         i=0;
-
-
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,4 +61,5 @@ public class flashcardView extends Activity {
             }
         });
     }
+
 }
